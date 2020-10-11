@@ -35,10 +35,10 @@ struct Sphere
     }
 
 
-    void checkColideWithWalls(float DT, sf::RenderWindow window)
+    void checkColideWithWalls(float DT, sf::RenderWindow* window)
     {
-        float window_length = window.getSize().x;
-        float window_width = window.getSize().y;
+        float window_length = window->getSize().x;
+        float window_width = window->getSize().y;
         if (pos.x + speed.x * DT + r > window_length)
         {
             speed.x *= -1;
@@ -66,10 +66,10 @@ struct Sphere
         return pow(pos.x - sphere2->pos.x, 2) + pow(pos.y - sphere2->pos.y, 2) < pow(r + sphere2->r, 2);
     }
 
-    void collideSpheres(Sphere* sphere2, sf::RenderWindow window)
+    void collideSpheres(Sphere* sphere2, sf::RenderWindow* window)
     {
-        float window_length = window.getSize().x;
-        float window_width = window.getSize().y;
+        float window_length = window->getSize().x;
+        float window_width = window->getSize().y;
         float vx10 = speed.x;
         float vy10 = speed.y;
         float vx20 = sphere2->speed.x;
