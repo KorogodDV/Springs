@@ -1,3 +1,4 @@
+#pragma once
 #include "math.h"
 #include <cassert>
 #include <iostream>
@@ -46,6 +47,7 @@ struct Vector2f
 
 	Vector2f normalize()
 	{
+		assert(this->len());
 		float len = this->len();
 		return Vector2f(x / len, y / len);
 	}		
