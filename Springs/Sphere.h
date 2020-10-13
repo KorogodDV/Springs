@@ -6,13 +6,26 @@
 
 struct Sphere
 {
-    Vector2f pos = Vector2f(0.0, 0.0);
-    int r;
-    Vector2f speed = Vector2f(0.0, 0.0);
-    int m = 1;
-    int red = 0;
-    int green = 0;
-    int blue = 0;
+    Vector2f pos;
+    Vector2f speed;
+    Vector2f acceleration;
+    float r;
+    float m;
+    int red;
+    int green;
+    int blue;
+
+    Sphere(Vector2f pos = Vector2f(0, 0), Vector2f speed = Vector2f(0, 0), Vector2f acceleration = Vector2f(0, 0), float r = 0, float m = 1, int red = 0, int green = 0, int blue = 0)
+    {
+        this->pos = pos;
+        this->speed = speed;
+        this->acceleration = acceleration;
+        this->r = r;
+        this->m = m;
+        this->red = red;
+        this->green = green;
+        this->blue = blue;
+    }
 
     void draw(sf::RenderWindow* window, int lighting_detailing = 10)
     {
@@ -31,6 +44,7 @@ struct Sphere
 
     void move(const float DT)
     {
+        speed = speed + acceleration * DT;
         pos = pos + speed * DT;
     }
 
